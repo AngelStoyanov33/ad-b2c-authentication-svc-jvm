@@ -22,9 +22,12 @@ public class CacheConfig {
     @Value("${spring.security.oauth2.azure.ad.b2c.token.caching.cache.size}")
     private Integer cacheSize;
 
+    @Value("${spring.security.oauth2.azure.ad.b2c.token.caching.cache.collection.name}")
+    private String cacheCollectionName;
+
     @Bean
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("tokens") {
+        return new ConcurrentMapCacheManager(cacheCollectionName) {
             @Override
             protected Cache createConcurrentMapCache(final String name) {
                 return new ConcurrentMapCache(name,
