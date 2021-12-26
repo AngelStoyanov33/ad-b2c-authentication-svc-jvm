@@ -15,7 +15,7 @@
 	<description>Azure Active Directory Business-2-Client Authentication Service</description>
 	<properties>
 		<java.version>11</java.version>
-        <start-class>me.angelstoyanov.sporton.auth.AdB2CAuthenticationSvcApplication</start-class>
+        <start-class>me.angelstoyanov.sporton.auth.AuthenticationApplication</start-class>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot 2.5.x Dependencies -->
