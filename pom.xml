@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.8</version>
+		<version>2.5.7</version>
 		<relativePath/>
 	</parent>
 	<groupId>me.angelstoyanov.sporton</groupId>
@@ -15,6 +15,7 @@
 	<description>Azure Active Directory Business-2-Client Authentication Service</description>
 	<properties>
 		<java.version>11</java.version>
+        <start-class>me.angelstoyanov.sporton.auth.AdB2CAuthenticationSvcApplication</start-class>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot 2.5.x Dependencies -->
