@@ -6,7 +6,6 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import java.lang.annotation.Native;
-import java.util.HashSet;
 import java.util.Map;
 
 
@@ -17,7 +16,7 @@ public class ClaimsValidator implements JwtClaimsSetVerifier {
 
     @Native
     private static final String AUD_PREFIX_V1 = "api://";
-    
+
     private final String applicationId;
 
     @Override
@@ -42,7 +41,7 @@ public class ClaimsValidator implements JwtClaimsSetVerifier {
         this.applicationId = applicationId;
     }
 
-    private void validateADAliasesAndTenants(final String[] azureADAliases, final String[] acceptedTenants){
+    private void validateADAliasesAndTenants(final String[] azureADAliases, final String[] acceptedTenants) {
         Assert.notEmpty(azureADAliases, "Azure AD Aliases cannot be empty");
         for (final String issuer : azureADAliases) {
             Assert.notNull(issuer, "An Azure AD Alias cannot be null");
