@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -45,6 +46,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/*")
                 .authenticated();
     }
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources){
+        // Set the resourceId to null as AAD tokens have Audience claim as a variable, and it's checked in the claimSetVerifier
+        // By setting it to null, the resourceId is not being verified by Spring Security
+        resources.resourceId(null);
+    }
+
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtConverter = new JwtAccessTokenConverter();
