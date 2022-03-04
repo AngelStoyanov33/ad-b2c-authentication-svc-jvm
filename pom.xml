@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>me.angelstoyanov.sporton</groupId>
 	<artifactId>ad-b2c-authentication-svc</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>AD-B2C-Authentication-SVC</name>
 	<description>Azure Active Directory Business-2-Client Authentication Service</description>
 	<properties>
@@ -54,8 +54,7 @@
             <artifactId>spring-security-jwt</artifactId>
             <version>${spring.security.jwt.version}</version>
         </dependency>
-		
-		<!-- External Dependencies -->
+        <!-- External Dependencies -->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
@@ -66,6 +65,12 @@
             <artifactId>msal4j</artifactId>
             <version>${microsoft.msal4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
