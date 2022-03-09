@@ -39,19 +39,25 @@ public class AuthenticationController {
 
 
     @GetMapping("/authenticate")
-    public ResponseEntity<String> test(@RequestHeader("Authorization") String authorization) throws JsonProcessingException {
+    public ResponseEntity<String> authenticate(@RequestHeader("Authorization") String authorization) throws JsonProcessingException {
 
         OAuth2AccessToken token = resourceServerTokenServices
                 .readAccessToken(StringUtils.substringAfter(authorization, "Bearer "));
 
-        Map<String, Object> payload = getPayload(token);
-        String userId = payload.get("oid").toString();
+        try {
+            Map<String, Object> payload = getPayload(token);
+            String userId = payload.get("oid").toString();
 
-        return ResponseEntity
-                .status(200)
-                .header(userIdHeaderName, userId)
-                .header(userRoleHeaderName, getUserRole(userId))
-                .body(null);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .header(userIdHeaderName, userId)
+                    .header(userRoleHeaderName, getUserRole(userId))
+                    .body(null);
+        } catch (NullPointerException e) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
+        }
 
     }
 
